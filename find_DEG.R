@@ -45,10 +45,10 @@ head(paad)
 
 
 # extracting relevant columns
-brcavp <- subset(brca, select = c('ncbi_gene_id', 'BRCA_fdr_adjusted_p_value', 'BRCA_log2_fold_change'))
-kircvp <- subset(kirc, select = c('ncbi_gene_id', 'KIRC_fdr_adjusted_p_value', 'KIRC_log2_fold_change'))
-luadvp <- subset(luad, select = c('ncbi_gene_id', 'LUAD_fdr_adjusted_p_value', 'LUAD_log2_fold_change'))
-paadvp <- subset(paad, select = c('ncbi_gene_id', 'PAAD_fdr_adjusted_p_value', 'PAAD_log2_fold_change'))
+brcavp <- subset(brca, select = c('ncbi_gene_id', 'fdr_adjusted_p_value', 'log2_fold_change'))
+kircvp <- subset(kirc, select = c('ncbi_gene_id', 'fdr_adjusted_p_value', 'log2_fold_change'))
+luadvp <- subset(luad, select = c('ncbi_gene_id', 'fdr_adjusted_p_value', 'log2_fold_change'))
+paadvp <- subset(paad, select = c('ncbi_gene_id', 'fdr_adjusted_p_value', 'log2_fold_change'))
 
 View(brcavp)
 View(kircvp)
@@ -61,23 +61,45 @@ View(paadvp)
 
 suppressMessages(library(ggplot2))
 
-# estatblish cutoff values
-# padj.cutoff <- 0.05
-# lfc.cutoff <- 0.58
+# establish cutoff values
 
 # BRCA Volcano Plot
-ggplot(data = brcavp, aes(x = BRCA_log2_fold_change, y = -log10(BRCA_fdr_adjusted_p_value))) + geom_point(size = 0.5) + coord_cartesian(xlim = c(-5, 5), ylim = c(0, 20)) + ggtitle("BRCA Volcano Plot")
+ggplot(data = brcavp, aes(x = log2_fold_change, y = -log10(fdr_adjusted_p_value))) + geom_point(size = 0.5) + coord_cartesian(xlim = c(-5, 5), ylim = c(0, 20)) + ggtitle("BRCA Volcano Plot") + geom_vline(xintercept = 1.5, color = "red") + geom_vline(xintercept = -1.5, color = "red") + geom_hline(yintercept = 5, color = "red")
+
+# BRCA Colored Volcano Plot
+ggplot(brcavp) +
+  geom_point(aes(x=log2_fold_change, y=-log10(fdr_adjusted_p_value), color=threshold)) +
+  ggtitle("BRCA Volcano Plot Colored") +
+  xlab("log2 fold change") + 
+  ylab("-log10 FDR adjusted p-value") +
+  theme(legend.position = "none",
+        plot.title = element_text(size = rel(1.5), hjust = 0.5),
+        axis.title = element_text(size = rel(1.25))) 
+
+# BRCA DEGs
+fdr_adjusted_p_value_cutoff <- 0.1
+log2_fold_change_cutoff <- 1
+
+threshold <- brcavp$fdr_adjusted_p_value < fdr_adjusted_p_value_cutoff & abs(brcavp$log2_fold_change) > log2_fold_change_cutoff
+
+  
+brca_sig <- filter(brca, (brca$log2_fold_change >= 2 | brca$log2_fold_change <= -2) & (-log10(brca$fdr_adjusted_p_value)))
+
+ggplot(data = brcavp, aes(x = log2_fold_change, y = -log10(fdr_adjusted_p_value))) + geom_point(size = 0.5) + coord_cartesian(xlim = c(-1, 1), ylim = c(10, 20))
 
 # KIRC Volcano Plot
-ggplot(data = kircvp, aes(x = KIRC_log2_fold_change, y = -log10(KIRC_fdr_adjusted_p_value))) + geom_point(size = 0.5) + coord_cartesian(xlim = c(-5, 5), ylim = c(0, 20)) + ggtitle("KIRC Volcano Plot")
+ggplot(data = kircvp, aes(x = log2_fold_change, y = -log10(fdr_adjusted_p_value))) + geom_point(size = 0.5) + coord_cartesian(xlim = c(-5, 5), ylim = c(0, 20)) + ggtitle("KIRC Volcano Plot")
 
 # LUAD Volcano Plot
-ggplot(data = luadvp, aes(x = LUAD_log2_fold_change, y = -log10(LUAD_fdr_adjusted_p_value))) + geom_point(size = 0.5) + coord_cartesian(xlim = c(-5, 5), ylim = c(0, 20)) + ggtitle("LUAD Volcano Plot")
+ggplot(data = luadvp, aes(x = log2_fold_change, y = -log10(fdr_adjusted_p_value))) + geom_point(size = 0.5) + coord_cartesian(xlim = c(-5, 5), ylim = c(0, 20)) + ggtitle("LUAD Volcano Plot")
 
 # PAAD Volcano Plot
-ggplot(data = paadvp, aes(x = PAAD_log2_fold_change, y = -log10(PAAD_fdr_adjusted_p_value))) + geom_point(size = 0.5) + coord_cartesian(xlim = c(-5, 5), ylim = c(0, 20)) + ggtitle("PAAD Volcano Plot")
+ggplot(data = paadvp, aes(x = log2_fold_change, y = -log10(fdr_adjusted_p_value))) + geom_point(size = 0.5) + coord_cartesian(xlim = c(-5, 5), ylim = c(0, 20)) + ggtitle("PAAD Volcano Plot")
 
 
+######
+# DEG HISTOGRAMS
+######
 
 hist(brcavp$BRCA_fdr_adjusted_p_value, 
      col="grey", border="white", xlab="", ylab="", main="BRCA - frequencies of adj. p-values\n(all genes)")
@@ -104,17 +126,17 @@ hist(paadvp$PAAD_fdr_adjusted_p_value,
 
 # create unique column names for each cancer
 # colnames(paad) <- c("ncbi_gene_id","PAAD_fdr_adjusted_p_value", "PAAD_cancer_sample_med",
-                    "PAAD_normal_sample_med", "PAAD_log2_fold_change", "PAAD_p_value", 
-                    "gene_symbol")
+                    #"PAAD_normal_sample_med", "PAAD_log2_fold_change", "PAAD_p_value", 
+                    #"gene_symbol")
 # colnames(kirc) <- c("ncbi_gene_id","KIRC_fdr_adjusted_p_value", "KIRC_cancer_sample_med",
-                    "KIRC_normal_sample_med", "KIRC_log2_fold_change", "KIRC_p_value", 
-                    "gene_symbol")
+                    #"KIRC_normal_sample_med", "KIRC_log2_fold_change", "KIRC_p_value", 
+                    #"gene_symbol")
 # colnames(brca) <- c("ncbi_gene_id","BRCA_fdr_adjusted_p_value", "BRCA_cancer_sample_med",
-                    "BRCA_normal_sample_med", "BRCA_log2_fold_change", "BRCA_p_value", 
-                    "gene_symbol")
+                    #"BRCA_normal_sample_med", "BRCA_log2_fold_change", "BRCA_p_value", 
+                    #"gene_symbol")
 # colnames(luad) <- c("ncbi_gene_id","LUAD_fdr_adjusted_p_value", "LUAD_cancer_sample_med",
-                    "LUAD_normal_sample_med", "LUAD_log2_fold_change", "LUAD_p_value", 
-                    "gene_symbol")
+                    #"LUAD_normal_sample_med", "LUAD_log2_fold_change", "LUAD_p_value", 
+                    #"gene_symbol")
 
 # merge paad and kirc
 # paad_kirc <- merge(paad, kirc, by=c("ncbi_gene_id", "gene_symbol"))
