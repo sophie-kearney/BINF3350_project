@@ -43,6 +43,19 @@ head(kirc)
 head(luad)
 head(paad)
 
+# create unique column names for each cancer
+colnames(paad) <- c("ncbi_gene_id","PAAD_fdr_adjusted_p_value", "PAAD_cancer_sample_med",
+                    "PAAD_normal_sample_med", "PAAD_log2_fold_change", "PAAD_p_value", 
+                    "gene_symbol")
+colnames(kirc) <- c("ncbi_gene_id","KIRC_fdr_adjusted_p_value", "KIRC_cancer_sample_med",
+                    "KIRC_normal_sample_med", "KIRC_log2_fold_change", "KIRC_p_value", 
+                    "gene_symbol")
+colnames(brca) <- c("ncbi_gene_id","BRCA_fdr_adjusted_p_value", "BRCA_cancer_sample_med",
+                    "BRCA_normal_sample_med", "BRCA_log2_fold_change", "BRCA_p_value", 
+                    "gene_symbol")
+colnames(luad) <- c("ncbi_gene_id","LUAD_fdr_adjusted_p_value", "LUAD_cancer_sample_med",
+                    "LUAD_normal_sample_med", "LUAD_log2_fold_change", "LUAD_p_value", 
+                    "gene_symbol")
 
 # extracting relevant columns
 brcavp <- subset(brca, select = c('ncbi_gene_id', 'BRCA_fdr_adjusted_p_value', 'BRCA_log2_fold_change'))
@@ -92,6 +105,29 @@ hist(paadvp$PAAD_fdr_adjusted_p_value,
      col="grey", border="white", xlab="", ylab="", main="PAAD - frequencies of adj. p-values\n(all genes)")
 
 
+######
+# SUBSET LUAD
+######
+
+luad_deg <- luad[( ((luad$LUAD_log2_fold_change > 1.5) 
+                 | (luad$LUAD_log2_fold_change < -1.5))
+                 & (-log10(luad$LUAD_fdr_adjusted_p_value) > 10) ),]
+
+test <- luadvp %>% mutate(Color = ifelse((((luad$LUAD_log2_fold_change > 1.5) 
+                                          | (luad$LUAD_log2_fold_change < -1.5))
+                                         & (-log10(luad$LUAD_fdr_adjusted_p_value) > 10)), 
+                                         "black", "red")) 
+
+ggplot(data = test, aes(x = LUAD_log2_fold_change, 
+                          y = -log10(LUAD_fdr_adjusted_p_value),
+                          color=Color)) + geom_point(size = 0.5) + 
+       coord_cartesian(xlim = c(-5, 5), ylim = c(0, 20)) + 
+       ggtitle("LUAD Volcano Plot") + 
+       scale_color_manual(values = c("red", "black")) + 
+       labs(y= "-log10(FDR Adjusted P Value)", x = "Log Fold Change") + 
+       theme(legend.position = "none", plot.title = element_text(hjust = 0.5))
+
+
 ########################################################################
 ########################################################################
 ########################################################################
@@ -104,17 +140,17 @@ hist(paadvp$PAAD_fdr_adjusted_p_value,
 
 # create unique column names for each cancer
 # colnames(paad) <- c("ncbi_gene_id","PAAD_fdr_adjusted_p_value", "PAAD_cancer_sample_med",
-                    "PAAD_normal_sample_med", "PAAD_log2_fold_change", "PAAD_p_value", 
-                    "gene_symbol")
+                    # "PAAD_normal_sample_med", "PAAD_log2_fold_change", "PAAD_p_value", 
+                    # "gene_symbol")
 # colnames(kirc) <- c("ncbi_gene_id","KIRC_fdr_adjusted_p_value", "KIRC_cancer_sample_med",
-                    "KIRC_normal_sample_med", "KIRC_log2_fold_change", "KIRC_p_value", 
-                    "gene_symbol")
+                    # "KIRC_normal_sample_med", "KIRC_log2_fold_change", "KIRC_p_value", 
+                    # "gene_symbol")
 # colnames(brca) <- c("ncbi_gene_id","BRCA_fdr_adjusted_p_value", "BRCA_cancer_sample_med",
-                    "BRCA_normal_sample_med", "BRCA_log2_fold_change", "BRCA_p_value", 
-                    "gene_symbol")
+                    # "BRCA_normal_sample_med", "BRCA_log2_fold_change", "BRCA_p_value", 
+                    # "gene_symbol")
 # colnames(luad) <- c("ncbi_gene_id","LUAD_fdr_adjusted_p_value", "LUAD_cancer_sample_med",
-                    "LUAD_normal_sample_med", "LUAD_log2_fold_change", "LUAD_p_value", 
-                    "gene_symbol")
+                    # "LUAD_normal_sample_med", "LUAD_log2_fold_change", "LUAD_p_value", 
+                    # "gene_symbol")
 
 # merge paad and kirc
 # paad_kirc <- merge(paad, kirc, by=c("ncbi_gene_id", "gene_symbol"))
@@ -129,4 +165,4 @@ hist(paadvp$PAAD_fdr_adjusted_p_value,
 #write.csv(all, "all.csv", row.names = FALSE)
 
 # read in data from the csv file
-#a <- read.csv("all.csv", header=TRUE)
+# a <- read.csv("all.csv", header=TRUE)
