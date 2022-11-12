@@ -9,22 +9,22 @@ suppressMessages(library(ggplot2))
 ######
 # DATA PRE-PROCESSING
 ######
-brca_deg <- read.csv(file = 'data/shared_brca_deg.csv')
+brca_deg <- read.csv(file = 'data/BRCA.csv', sep = '\t')
 brca_deg <- brca_deg %>%
   clean_names()
 head(brca_deg)
 
-coad_deg <- read.csv(file = 'data/shared_coad_deg.csv')
+coad_deg <- read.csv(file = 'data/COAD.csv', sep = '\t')
 coad_deg <- coad_deg %>%
   clean_names()
 head(coad_deg)
 
-kirc_deg <- read.csv(file = 'data/shared_kirc_deg.csv')
+kirc_deg <- read.csv(file = 'data/KIRC.csv', sep = '\t')
 kirc_deg <- kirc_deg %>%
   clean_names()
 head(kirc_deg)
 
-luad_deg <- read.csv(file = 'data/shared_luad_deg.csv')
+luad_deg <- read.csv(file = 'data/LUAD.csv', sep = '\t')
 luad_deg <- luad_deg %>%
   clean_names()
 head(luad_deg)
@@ -48,8 +48,8 @@ ggplot(data = luad_deg, aes(x = log2_fold_change, y = -log10(fdr_adjusted_p_valu
 
 # BRCA
 brca_sig <- brca_deg[(((brca_deg$log2_fold_change > 1.5) 
-                   | (brca_deg$log2_fold_change < -1.5))
-                  & (-log10(brca_deg$fdr_adjusted_p_value) > 10) ),]
+                       | (brca_deg$log2_fold_change < -1.5))
+                      & (-log10(brca_deg$fdr_adjusted_p_value) > 10) ),]
 
 write.csv(brca_sig, "brca_sig.csv", row.names = FALSE)
 
@@ -190,24 +190,6 @@ ggplot(data = luad_vp, aes(x = log2_fold_change,
   scale_color_manual(values = c("red", "black")) + 
   labs(y= "-log10(FDR-Adjusted P-Value)", x = "Log2-Fold Change") + 
   theme(legend.position = "none", plot.title = element_text(hjust = 0.5))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
