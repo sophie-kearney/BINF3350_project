@@ -33,13 +33,13 @@ head(luad_deg)
 ######
 # VOLCANO PLOTS (ALL DEGs)
 ######
-ggplot(data = brca_deg, aes(x = log2_fold_change, y = -log10(fdr_adjusted_p_value))) + geom_point(size = 0.5) + coord_cartesian(xlim = c(-5, 5), ylim = c(0, 20)) + ggtitle("BRCA, Volcano Plot")
+ggplot(data = brca_deg, aes(x = log2_fold_change, y = -log10(fdr_adjusted_p_value))) + geom_point(size = 0.5) + coord_cartesian(xlim = c(-5, 5), ylim = c(0, 20)) + labs(y= "-log10(FDR-Adjusted P-Value)", x = "Log2-Fold Change") + ggtitle("BRCA, Volcano Plot")
 
-ggplot(data = coad_deg, aes(x = log2_fold_change, y = -log10(fdr_adjusted_p_value))) + geom_point(size = 0.5) + coord_cartesian(xlim = c(-5, 5), ylim = c(0, 20)) + ggtitle("COAD, Volcano Plot")
+ggplot(data = coad_deg, aes(x = log2_fold_change, y = -log10(fdr_adjusted_p_value))) + geom_point(size = 0.5) + coord_cartesian(xlim = c(-5, 5), ylim = c(0, 20)) + labs(y= "-log10(FDR-Adjusted P-Value)", x = "Log2-Fold Change") + ggtitle("COAD, Volcano Plot")
 
-ggplot(data = kirc_deg, aes(x = log2_fold_change, y = -log10(fdr_adjusted_p_value))) + geom_point(size = 0.5) + coord_cartesian(xlim = c(-5, 5), ylim = c(0, 20)) + ggtitle("KIRC, Volcano Plot")
+ggplot(data = kirc_deg, aes(x = log2_fold_change, y = -log10(fdr_adjusted_p_value))) + geom_point(size = 0.5) + coord_cartesian(xlim = c(-5, 5), ylim = c(0, 20)) + labs(y= "-log10(FDR-Adjusted P-Value)", x = "Log2-Fold Change") + ggtitle("KIRC, Volcano Plot")
 
-ggplot(data = luad_deg, aes(x = log2_fold_change, y = -log10(fdr_adjusted_p_value))) + geom_point(size = 0.5) + coord_cartesian(xlim = c(-5, 5), ylim = c(0, 20)) + ggtitle("LUAD, Volcano Plot")
+ggplot(data = luad_deg, aes(x = log2_fold_change, y = -log10(fdr_adjusted_p_value))) + geom_point(size = 0.5) + coord_cartesian(xlim = c(-5, 5), ylim = c(0, 20)) + labs(y= "-log10(FDR-Adjusted P-Value)", x = "Log2-Fold Change") + ggtitle("LUAD, Volcano Plot")
 
 
 ######
