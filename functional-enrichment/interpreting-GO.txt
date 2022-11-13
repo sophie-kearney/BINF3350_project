@@ -1,0 +1,54 @@
+### Interpreting GO Results ###
+
+
+On the results page, there is a table with seven (eight for Fisher’s exact test) essential columns of data. The default output is sorted by Hierarchy of the categories.  By default, only the categories with p-value better than 0.05 are displayed. In the hierarchy view, the results are sorted by the Fold Enrichment of the most specific categories, with their parent terms (p-value better than 0.05) indented directly below. Results with all p-values can be displayed by clicking the “click here to display all results” link.
+
+The first column contains the name of the annotation data category, such as PANTHER GO-slim, GO or PANTHER pathway. If you are doing this analysis in terms of pathways, you can click on the pathway name to view the corresponding pathway diagram.
+The second column contains the number of genes in the reference list that map to this particular annotation data category.
+The third column contains the number of genes in your uploaded list that map to this annotation data category.
+The fourth column contains the expected value, which is the number of genes you would expect in your list for this category, based on the reference list.
+The fifth column shows the Fold Enrichment of the genes observed in the uploaded list over the expected (number in your list divided by the expected number). If it is greater than 1, it indicates that the category is overrepresented in your experiment. Conversely, the category is underrepresented if it is less than 1.
+The sixth column has either a + or -. A plus sign indicates over-representation of this category in your experiment: you observed more genes than expected based on the reference list (for this category, the number of genes in your list is greater than the expected value). Conversely, a negative sign indicates under-representation.
+The seventh column is the raw p-value as determined by Fisher’s exact test or Binomial statistic. This is the probability that the number of genes you observed in this category occurred by chance (randomly), as determined by your reference list.
+The eighth column is the False Discovery Rate as calculated by the Benjamini-Hochberg procedure.  By default a critical value of 0.05 is used to filter results, so all results shown are valid for an overall FDR<0.05 even if the FDR for an individual comparison is greater than that value.  This value is output when the Fisher’s exact test option is selected.
+
+The table can be sorted by clicking the column header. A yellow triangle will appear at the column header to indicate the sort order. When the table is order by the column header, the hierarchy structure of the ontology terms is lost. The table is ordered only based on the values in the sorted column. To return to the Hierarchy view, simply click the 'Hierarchy' link at the top of the table.
+
+ 
+---
+Expected Value
+
+The expected value is the number of genes you would expect in your list for a particular annotation data category, based on the reference list. As an example, say we do do the analysis in terms of biological processes, and we are interested in determining if there is over- or under- representation of chromatin packaging and remodeling genes in your uploaded list.
+
+As an example, there are 23,481 genes in your reference list (ex: the human genome). 125 of these genes map to the 'Chromatin packaging and remodeling' category. Based on this, 0.532% (125 divided by 23481) of the genes in the reference list are involved in chromatin packaging and remodeling.
+
+Say that your upload list contains 978 genes. Based on the reference list, we would expect that 5.21 genes (978 * 0.532%) in your uploaded list would be involved in chromatin packaging and remodeling.
+
+If for this biological process you observe more genes in your uploaded list than expected, you have an over-representation (+) of genes involved in chromatin packaging and remodeling. If you observe fewer genes than expected, you have an under-representation (-).
+
+---
+P-Value calculated by the Binomial statistic
+
+In the example above we expected 5.21 genes in your uploaded list to be involved in chromatin packaging and remodeling. Say that we actually observe 7 genes involved in this biological process. This is very similar to 5.21, so you would expect a large p-value (the p-value would be 0.27). Alternatively, if 15 of your uploaded genes map to this process, this is very different than the expected p-value, so you would expect a small, significant p-value (the p-value would be 3.3E-04). This small p-value indicates that the result is non-random and potentially interesting, and worth looking at in closer detail. A p-value cutoff of 0.05 is recommended as a start point.
+
+The binomial statistic is a commonly used statistic (it can be found in any statistics book). In the binomial test we assume that under the NULL hypothesis, genes in the uploaded list are sampled from the same general population as genes from the reference set, i.e. the probability p(C) of observing a gene from a particular category C in the uploaded list is the same as in the reference list. We first estimate the probability p(C) from the reference set assuming that it is large and representative:
+
+p(C)=n(C)/N,
+
+
+where n(C) is the number of genes mapped to category C, and N is the total number of genes in the reference set.
+
+We then use the above estimate to find the p-value: the probability of observing k(C) genes (or a more extreme number) in the uploaded list of size K. Under the NULL hypothesis, the number of genes of mapped to C is distributed binomially with probability parameter p(C) and thus the p-value would be
+
+
+
+where the sum runs from k(C) to K in the case of over-representation (i.e. when the number of observed genes k(C) is greater than expected p(C)*K under the NULL hypothesis), and 0 to k(C), in the case of under-representation (i.e. when k(C) is smaller than p(C)*K).
+
+When developing this analysis tool, we tested using both the Chi-Square and Binomial statistical tests. We decided to use the Binomial, since the Chi-Square is not as accurate when the population sizes or the expect number is small.
+
+observe fewer genes than expected, you have an under-representation (-).
+
+---
+Export
+
+The output can be downloaded in tabular, XML or JSON format by clicking on the appropriate button. The XML and JSON output includes the user uploaded ids. Note, due a single user uploaded id mapping to many genes as well as many user ids mapping to a single gene (many to many relationship), it is possible to observe scenarios where the count does not equal the number of mapped ids.

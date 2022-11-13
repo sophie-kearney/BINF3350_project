@@ -1,0 +1,31 @@
+HUMAN|HGNC=1739|UniProtKB=O75419,CDC45,Cell division control protein 45 homolog;CDC45;PTN002471194;orthologs,CELL DIVISION CONTROL PROTEIN 45 HOMOLOG (PTHR10507:SF0),replication origin binding protein(PC00199),Homo sapiens
+HUMAN|HGNC=2210|UniProtKB=P05997,COL5A2,Collagen alpha-2(V) chain;COL5A2;PTN002513140;orthologs,COLLAGEN ALPHA-2(V) CHAIN (PTHR24023:SF539),extracellular matrix structural protein(PC00103),Homo sapiens
+HUMAN|HGNC=30827|UniProtKB=O95990,FAM107A,Actin-associated protein FAM107A;FAM107A;PTN002497647;orthologs,ACTIN-ASSOCIATED PROTEIN FAM107A (PTHR16768:SF3),,Homo sapiens
+HUMAN|HGNC=15937|UniProtKB=O00762,UBE2C,Ubiquitin-conjugating enzyme E2 C;UBE2C;PTN002544738;orthologs,UBIQUITIN-CONJUGATING ENZYME E2 C (PTHR24068:SF360),ubiquitin-protein ligase(PC00234),Homo sapiens
+HUMAN|HGNC=2197|UniProtKB=P02452,COL1A1,Collagen alpha-1(I) chain;COL1A1;PTN002513146;orthologs,COLLAGEN ALPHA-1(I) CHAIN (PTHR24023:SF569),extracellular matrix structural protein(PC00103),Homo sapiens
+HUMAN|HGNC=21748|UniProtKB=Q6X4U4,SOSTDC1,Sclerostin domain-containing protein 1;SOSTDC1;PTN002495180;orthologs,SCLEROSTIN DOMAIN-CONTAINING PROTEIN 1 (PTHR14903:SF5),intercellular signal molecule(PC00207),Homo sapiens
+HUMAN|HGNC=10738|UniProtKB=Q9H2E6,SEMA6A,Semaphorin-6A;SEMA6A;PTN002475829;orthologs,SEMAPHORIN-6A (PTHR11036:SF12),membrane-bound signaling molecule(PC00152),Homo sapiens
+HUMAN|HGNC=2209|UniProtKB=P20908,COL5A1,Collagen alpha-1(V) chain;COL5A1;PTN002513131;orthologs,COLLAGEN ALPHA-1(V) CHAIN (PTHR24023:SF387),extracellular matrix structural protein(PC00103),Homo sapiens
+HUMAN|HGNC=1663|UniProtKB=P16671,CD36,Platelet glycoprotein 4;CD36;PTN002484607;orthologs,PLATELET GLYCOPROTEIN 4 (PTHR11923:SF12),membrane trafficking regulatory protein(PC00151),Homo sapiens
+HUMAN|HGNC=18831|UniProtKB=Q96CG8,CTHRC1,Collagen triple helix repeat-containing protein 1;CTHRC1;PTN002484274;orthologs,COLLAGEN TRIPLE HELIX REPEAT-CONTAINING PROTEIN 1 (PTHR11903:SF18),oxygenase(PC00177),Homo sapiens
+HUMAN|HGNC=10452|UniProtKB=P31350,RRM2,Ribonucleoside-diphosphate reductase subunit M2;RRM2;PTN002511785;orthologs,RIBONUCLEOSIDE-DIPHOSPHATE REDUCTASE SUBUNIT M2 (PTHR23409:SF20),reductase(PC00198),Homo sapiens
+HUMAN|HGNC=12307|UniProtKB=Q15645,TRIP13,Pachytene checkpoint protein 2 homolog;TRIP13;PTN002507742;orthologs,PACHYTENE CHECKPOINT PROTEIN 2 HOMOLOG (PTHR45991:SF1),"chromatin/chromatin-binding, or -regulatory protein(PC00077)",Homo sapiens
+HUMAN|HGNC=1375|UniProtKB=P22748,CA4,Carbonic anhydrase 4;CA4;PTN002498547;orthologs,CARBONIC ANHYDRASE 4 (PTHR18952:SF95),dehydratase(PC00091),Homo sapiens
+HUMAN|HGNC=1148|UniProtKB=O43683,BUB1,Mitotic checkpoint serine/threonine-protein kinase BUB1;BUB1;PTN002493647;orthologs,MITOTIC CHECKPOINT SERINE/THREONINE-PROTEIN KINASE BUB1 (PTHR14030:SF26),non-receptor serine/threonine protein kinase(PC00167),Homo sapiens
+HUMAN|HGNC=1249|UniProtKB=Q9ULW0,TPX2,Targeting protein for Xklp2;TPX2;PTN002494522;orthologs,TARGETING PROTEIN FOR XKLP2 (PTHR14326:SF44),non-motor microtubule binding protein(PC00166),Homo sapiens
+HUMAN|HGNC=14460|UniProtKB=Q9UN36,NDRG2,Protein NDRG2;NDRG2;PTN002475807;orthologs,PROTEIN NDRG2 (PTHR11034:SF17),serine protease(PC00203),Homo sapiens
+HUMAN|HGNC=16870|UniProtKB=Q14680,MELK,Maternal embryonic leucine zipper kinase;MELK;PTN002519063;orthologs,MATERNAL EMBRYONIC LEUCINE ZIPPER KINASE (PTHR24343:SF121),non-receptor serine/threonine protein kinase(PC00167),Homo sapiens
+HUMAN|HGNC=20669|UniProtKB=Q86VI3,IQGAP3,Ras GTPase-activating-like protein IQGAP3;IQGAP3;PTN002493885;orthologs,RAS GTPASE-ACTIVATING-LIKE PROTEIN IQGAP3 (PTHR14149:SF10),GTPase-activating protein(PC00257),Homo sapiens
+HUMAN|HGNC=26172|UniProtKB=Q9H6K5,PRR36,Proline-rich protein 36;PRR36;PTN002503077;orthologs,PROLINE-RICH PROTEIN 36 (PTHR22427:SF8),,Homo sapiens
+HUMAN|HGNC=1161|UniProtKB=Q53EZ4,CEP55,Centrosomal protein of 55 kDa;CEP55;PTN002528007;orthologs,CENTROSOMAL PROTEIN OF 55 KDA (PTHR31838:SF1),,Homo sapiens
+HUMAN|HGNC=38|UniProtKB=O94911,ABCA8,ABC-type organic anion transporter ABCA8;ABCA8;PTN002499154;orthologs,ABC-TYPE ORGANIC ANION TRANSPORTER ABCA8 (PTHR19229:SF148),ATP-binding cassette (ABC) transporter(PC00003),Homo sapiens
+HUMAN|HGNC=7548|UniProtKB=P10244,MYBL2,Myb-related protein B;MYBL2;PTN002472231;orthologs,MYB-RELATED PROTEIN B (PTHR45614:SF30),,Homo sapiens
+HUMAN|HGNC=14082|UniProtKB=Q9NQW6,ANLN,Anillin;ANLN;PTN002502315;orthologs,ANILLIN (PTHR21538:SF23),non-motor actin binding protein(PC00165),Homo sapiens
+HUMAN|HGNC=16770|UniProtKB=Q8NFY4,SEMA6D,Semaphorin-6D;SEMA6D;PTN002475830;orthologs,SEMAPHORIN-6D (PTHR11036:SF65),membrane-bound signaling molecule(PC00152),Homo sapiens
+HUMAN|HGNC=250|UniProtKB=P00325,ADH1B,All-trans-retinol dehydrogenase [NAD(+)] ADH1B;ADH1B;PTN002536712;orthologs,ALL-TRANS-RETINOL DEHYDROGENASE [NAD(+)] ADH1B (PTHR43880:SF11),dehydrogenase(PC00092),Homo sapiens
+HUMAN|HGNC=16299|UniProtKB=O15204,ADAMDEC1,ADAM DEC1;ADAMDEC1;PTN002484304;orthologs,ADAM DEC1 (PTHR11905:SF125),metalloprotease(PC00153),Homo sapiens
+HUMAN|HGNC=24352|UniProtKB=Q8IZW8,TNS4,Tensin-4;TNS4;PTN002487369;orthologs,TENSIN-4 (PTHR45734:SF6),non-motor actin binding protein(PC00165),Homo sapiens
+HUMAN|HGNC=9787|UniProtKB=O95235,KIF20A,Kinesin-like protein KIF20A;KIF20A;PTN002516249;orthologs,KINESIN-LIKE PROTEIN KIF20A (PTHR24115:SF352),microtubule binding motor protein(PC00156),Homo sapiens
+HUMAN|HGNC=7157|UniProtKB=P24347,MMP11,Stromelysin-3;MMP11;PTN002468997;orthologs,STROMELYSIN-3 (PTHR10201:SF20),metalloprotease(PC00153),Homo sapiens
+HUMAN|HGNC=10592|UniProtKB=Q8IWT1,SCN4B,Sodium channel subunit beta-4;SCN4B;PTN002493231;orthologs,SODIUM CHANNEL SUBUNIT BETA-4 (PTHR13869:SF14),myelin protein(PC00161),Homo sapiens
+HUMAN|HGNC=593|UniProtKB=O15392,BIRC5,Baculoviral IAP repeat-containing protein 5;BIRC5;PTN001295625;orthologs,BACULOVIRAL IAP REPEAT-CONTAINING PROTEIN 5 (PTHR46771:SF3),,Homo sapiens
