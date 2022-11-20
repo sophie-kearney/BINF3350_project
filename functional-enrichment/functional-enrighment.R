@@ -65,3 +65,28 @@ go_enrich <- enrichGO(gene = genes,
                       ont = "BP",
                       pvalueCutoff = 0.05, 
                       qvalueCutoff = 0.10)
+
+
+####
+# edits
+####
+
+library(clusterProfiler)
+
+brca <- read.csv(file='cross-comparison/brca_diff.csv')
+coad <- read.csv(file='cross-comparison/coad_diff.csv')
+kirc <- read.csv(file='cross-comparison/kirc_diff.csv')
+luad <- read.csv(file='cross-comparison/luad_diff.csv')
+shared <- read.csv(file='cross-comparison/shared_DEGs.csv')
+
+luad_ego <- enrichGO(gene     = luad$ncbi_gene_id,
+                     OrgDb         = "org.Hs.eg.db",
+                     ont           = "BP",
+                     pAdjustMethod = "fdr",
+                     pvalueCutoff  = 0.01,
+                     qvalueCutoff  = 0.05,
+                     readable      = TRUE)
+
+luad_results <-  luad_ego@result
+rownames(luad_results) <- 1:nrow(luad_results)
+View(luad_results)
